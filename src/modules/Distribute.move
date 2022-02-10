@@ -1,4 +1,4 @@
-address 0x2 {
+address 0x3865E774f13E8cb02bBb2225D6605FAA {
     module STCNS{
 
         use 0x1::Vector;
@@ -15,7 +15,7 @@ address 0x2 {
             Proportion: vector<u8>
         }
         public fun  get_manager():address{
-            return @0xc17e245c8ce8dcfe56661fa2796c98cf
+            return @0x3865E774f13E8cb02bBb2225D6605FAA
         }
         fun get_index(addr:&address):Option::Option<u64> acquires Global_Data{
             let data = borrow_global<Global_Data>(get_manager());
