@@ -1,5 +1,5 @@
 address 0x3865E774f13E8cb02bBb2225D6605FAA {
-    module STCNS{
+    module Distribute{
 
         use 0x1::Vector;
         use 0x1::Signer;
@@ -83,6 +83,21 @@ address 0x3865E774f13E8cb02bBb2225D6605FAA {
                 List:   Vector::empty<Distribute_Rule>()
             };
             move_to<Global_Data>(account,data);
+        }
+    }
+    module Distribute_Script{
+        use 0x3865E774f13E8cb02bBb2225D6605FAA::Distribute;
+        public (script) fun send(account:signer,amount:u128){
+            Distribute::send(&account,amount);
+        }
+        public (script) fun add(account:signer,addrs:vector<address>,proportions:vector<u8>){
+            Distribute::add(&account,&addrs,&proportions);
+        }
+        public (script) fun delete(account:signer){
+            Distribute::delete(&account);
+        }
+        public (script) fun init(account:signer){
+            Distribute::init(&account);
         }
     }
 }
