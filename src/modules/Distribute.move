@@ -78,7 +78,7 @@ address 0x3865E774f13E8cb02bBb2225D6605FAA {
         public fun init(account:&signer) {
             let addr = Signer::address_of(account);
             assert(addr == get_manager(),2002);
-            assert(exists<Distribute_Rule>(get_manager()),2003);
+            assert(!exists<Distribute_Rule>(get_manager()),2003);
             let data = Global_Data{
                 List:   Vector::empty<Distribute_Rule>()
             };
